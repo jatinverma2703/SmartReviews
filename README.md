@@ -42,4 +42,126 @@ SmartReviews/
 │
 ├── README.md                 # Project documentation
 └── package.json              # Project metadata and scripts
+## 🚀 Getting Started
+
+
+---
+
+## 🚀 Getting Started
+
+### 📦 Backend Setup
+
+1. Navigate to the backend folder:
+cd backend
+
+2. Install backend dependencies:
+
+
+3. Create a `.env` file inside the `backend/` directory and add the following:
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=smartreviews
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+4. Start the backend server:
+
+
+---
+
+### 🌐 Frontend Setup
+
+1. Navigate to the frontend folder:
+cd frontend
+
+2. Install frontend dependencies:
+npm install
+
+2. Install frontend dependencies:
+
+
+3. Start the React app:
+
+
+---
+
+### 🛠️ Database Setup
+
+1. Create the MySQL database:
+CREATE DATABASE smartreviews;
+
+2. Import the schema from the provided SQL file:
+mysql -u root -p smartreviews < database/schema.sql
+
+---
+
+
+## 🌉 API Endpoints (RESTful)
+
+### Reviews
+
+- `GET /api/reviews/:productId` – Retrieve all reviews for a product  
+- `POST /api/reviews/` – Submit a new review (multipart/form-data)
+
+  Required fields in the request:
+  - `productId`
+  - `userId`
+  - `rating`
+  - `reviewText`
+  - `image` (optional)
+
+### Products
+
+- `GET /api/products/` – Get all products  
+- `POST /api/products/` – Add a new product (admin only)
+
+---
+
+## 🧩 Tech Stack
+
+- **Frontend**: React.js, Axios, CSS Grid, Flexbox  
+- **Backend**: Node.js, Express.js  
+- **Database**: MySQL  
+- **Cloud Storage**: Cloudinary  
+- **Utilities**: Multer (file handling), dotenv (env management)
+
+---
+
+## ✅ Roadmap
+
+- [x] Star rating and review system
+- [x] Cloudinary image uploads
+- [ ] User authentication
+- [ ] Admin product dashboard
+- [ ] Review filtering and pagination
+
+---
+
+## 👨‍💻 Author
+
+**Jatin Verma**  
+[GitHub](https://github.com/jatinverma2703) • [LinkedIn](https://www.linkedin.com/in/jatin-verma-61b14b202/)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🧠 Inspiration
+
+SmartReviews was built to enhance transparency and engagement in the product review process for tech-savvy users, allowing rich feedback through text, images, and ratings.
+
+---
+
+
+
+
+
+
 
