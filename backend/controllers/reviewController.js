@@ -1,7 +1,6 @@
 const db = require('../models/db');
 const cloudinary = require('../utils/cloudinary');
 
-// 🟢 Get all products with ratings & review count
 exports.getAllProducts = (req, res) => {
   const query = `
     SELECT p.id, p.name, p.image_url,
@@ -17,7 +16,6 @@ exports.getAllProducts = (req, res) => {
   });
 };
 
-// 🟢 Get all reviews for a specific product
 exports.getProductReviews = (req, res) => {
   const { productId } = req.params;
   const query = `
@@ -33,7 +31,6 @@ exports.getProductReviews = (req, res) => {
   });
 };
 
-// 🟢 Submit new review
 exports.submitReview = async (req, res) => {
   const { productId } = req.params;
   const { email, rating, review } = req.body;
@@ -44,10 +41,8 @@ exports.submitReview = async (req, res) => {
       return res.status(400).json({ message: "Invalid input" });
     }
 
-    // ✅ Ensure rating is parsed correctly
     const parsedRating = parseInt(rating, 10) || null;
 
-    // ✅ Upload to Cloudinary if image is present
     if (req.file) {
       const uploadResult = await cloudinary.uploader.upload(req.file.path, {
         folder: "reviews"
@@ -55,7 +50,6 @@ exports.submitReview = async (req, res) => {
       imageUrl = uploadResult.secure_url;
     }
 
-    // ✅ Ensure user exists or create new
     db.query('SELECT id FROM users WHERE email = ?', [email], (err, result) => {
       if (err) return res.status(500).json(err);
 
@@ -98,7 +92,6 @@ exports.submitReview = async (req, res) => {
   }
 };
 
-// 🟢 Update review (used if allowing editing)
 exports.updateReview = async (req, res) => {
   const { productId } = req.params;
   const { email, rating, review } = req.body;
@@ -153,7 +146,7 @@ exports.updateReview = async (req, res) => {
       });
     });
   } catch (err) {
-    console.error("❌ Error updating review:", err);
+    console.error("Error updating review:", err);
     res.status(500).json({ message: "Server error", error: err.message });
   }
 };
